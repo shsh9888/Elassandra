@@ -1,6 +1,10 @@
-#first argument is node name (mandatory)
-#second argument is VM instance IP(mandatory)
+yes Y | sudo apt install default-jre
+yes Y | sudo apt install default-jdk
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-#third argument <ip of all seeds comma seperated>(mandatory)
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-eval sudo docker run --name $1 -d -e CASSANDRA_BROADCAST_ADDRESS=$2 -p 9042:9042 -p 7000:7000 -p 9200:9200 -p 9300:9300 -p 9160:9160 -p 7199:7199 -p 7001:7001 -e CASSANDRA_SEEDS=$3 strapdata/elassandra
+sudo apt-get update
+
+sudo apt-get install -y docker-ce
+sudo docker pull strapdata/elassandra
